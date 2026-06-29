@@ -4,13 +4,13 @@ pages:
   cache:
     key:
       files:
-        - pnpm-lock.yaml
-      prefix: pnpm
+        - yarn.lock
+      prefix: yarn
     paths:
       - node_modules/
   script:
-    - pnpm install
-    - pnpm run build
+    - yarn install
+    - yarn run build
     - cp -a build/client/. public/
   artifacts:
     paths:
