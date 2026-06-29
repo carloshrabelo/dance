@@ -3,8 +3,18 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "/dances/",
   plugins: [tailwindcss(), reactRouter()],
   resolve: {
     tsconfigPaths: true,
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://calendar.google.com/calendar/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });
